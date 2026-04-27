@@ -8,15 +8,34 @@
 
 ## 🚀 快速安装
 
+```bash
+npx skills add TreesCodeResp/Caveman-CN
+```
+
+指定 Agent 安装：
+
 | Agent | 命令 |
 |-------|------|
 | Claude Code | `npx skills add TreesCodeResp/Caveman-CN -a claude-code` |
 | Cursor | `npx skills add TreesCodeResp/Caveman-CN -a cursor` |
 | GitHub Copilot | `npx skills add TreesCodeResp/Caveman-CN -a github-copilot` |
+| CodeBuddy | `npx skills add TreesCodeResp/Caveman-CN -a codebuddy` |
 
-其他 Agent：`npx skills add TreesCodeResp/Caveman-CN`
+### Windows 用户
 
-Windows 安装失败加 `--copy`
+Windows 符号链接需管理员权限或开发者模式。如安装报错，加 `--copy` 改用文件复制：
+
+```bash
+npx skills add TreesCodeResp/Caveman-CN --copy
+```
+
+### 非交互安装（CI/CD）
+
+加 `--yes` 跳过所有确认提示：
+
+```bash
+npx skills add TreesCodeResp/Caveman-CN --yes
+```
 
 ## 📖 使用说明
 
@@ -39,11 +58,13 @@ Windows 安装失败加 `--copy`
 
 ## 🔧 手动配置
 
-如果 `npx skills add` 不可用，可手动复制 `skills/caveman-cn/SKILL.md` 的内容到对应位置：
+如果 `npx skills add` 不可用或不支持你的 Agent，可手动复制 `skills/caveman-cn/SKILL.md` 的内容到对应位置：
 
+- Claude Code → `.claude/skills/caveman-cn.md`
 - Cursor → `.cursor/rules/caveman-cn.mdc`
 - GitHub Copilot → `.github/copilot-instructions.md`
-- Claude Code → `.claude/skills/caveman-cn.md`
+- CodeBuddy（项目级）→ `.codebuddy/skills/caveman-cn/SKILL.md`
+- CodeBuddy（用户级）→ `~/.codebuddy/skills/caveman-cn/SKILL.md`
 
 ## ⚙️ 配置原则
 
@@ -65,6 +86,7 @@ Caveman-CN/
 ├── skills/
 │   └── caveman-cn/
 │       └── SKILL.md      # Skill 定义（npx skills 读取）
+├── .gitignore
 ├── LICENSE
 └── README.md
 ```
