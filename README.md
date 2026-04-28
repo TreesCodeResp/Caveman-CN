@@ -93,7 +93,7 @@ npx skills add TreesCodeResp/Caveman-CN --yes
 如果 `npx skills add` 不可用或不支持你的 Agent，可手动复制 `skills/caveman-cn/SKILL.md` 的内容到对应位置：
 
 - Claude Code → `.claude/skills/caveman-cn.md`
-- Codex (plugin) → Clone Repo → 进入目录 `codex` → `/plugins` → 搜索 "Caveman-CN" → Install
+- Codex (plugin) → Clone Repo → 在仓目录内打开 Codex → `/plugins` → 搜索 "Caveman-CN" → Install
 - Cursor → `.cursor/rules/caveman-cn.mdc`
 - GitHub Copilot → `.github/copilot-instructions.md`
 - CodeBuddy（项目级）→ `.codebuddy/skills/caveman-cn/SKILL.md`
