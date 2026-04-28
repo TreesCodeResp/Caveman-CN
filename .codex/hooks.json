@@ -12,18 +12,6 @@
           }
         ]
       }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo 'CAVEMAN-CN REINFORCE. 默认标准档。回复紧凑，保留技术实质。砍客套、弱化、过渡。代码/commit/PR/技术文档保持完整。退出: 停止极简 / 正常模式。'",
-            "timeout": 5,
-            "statusMessage": "Reinforcing caveman-cn mode"
-          }
-        ]
-      }
     ]
   }
 }

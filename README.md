@@ -35,7 +35,7 @@ npx skills add TreesCodeResp/Caveman-CN
 2. Clone 本仓 → 打开 VS Code → Codex Settings → Plugins → 在本地 marketplace 中找到 "Caveman-CN" → Install → Reload Window
 3. Codex hooks 在 Windows 下当前禁用，用 `$caveman-cn` 手动启动 
 
-本仓通过 `.codex/hooks.json` + `.codex/config.toml` 实现自动激活，macOS/Linux 下在本仓内启动 Codex 时自动生效。除了 `SessionStart` 首次注入外，`UserPromptSubmit` hook 在每次用户输入时追加简短强化提示，防止长对话中极简模式漂移。安装的插件提供 `$caveman-cn` 命令；若想在其他仓库也启用自动激活，复制相同的 hook 并启用：
+本仓通过 `.codex/hooks.json` + `.codex/config.toml` 实现自动激活，macOS/Linux 下在本仓内启动 Codex 时自动生效。 `SessionStart` hook 提供首次注入提示。安装的插件提供 `$caveman-cn` 命令；若想在其他仓库也启用自动激活，复制相同的 hook 并启用：
 
 ```toml
 [features]
@@ -84,9 +84,9 @@ npx skills add TreesCodeResp/Caveman-CN --yes
 ### Codex 使用
 
 - Codex 使用 `$caveman-cn` 语法，不是 `/caveman-cn`
-- 本仓通过 `.codex/hooks.json` 自动激活（`SessionStart` 注入 + `UserPromptSubmit` 每轮强化）；安装的插件提供 `$caveman-cn` 命令
+- 本仓通过 `.codex/hooks.json` 自动激活（`SessionStart` 注入插件/skill）；安装的插件提供 `$caveman-cn` 命令
 - 若想在其他仓库也启用自动激活，复制相同的 `SessionStart` hook 并启用 `codex_hooks`
-- 退出：`停止极简` / `正常模式`
+- 退出：`停止极简` / `正常模式` 仅影响当前会话内模型行为；startup/resume 会由 `SessionStart` 重新注入。持久退出需后续 stateful hook 实现，见项目级 spec。
 
 ## 🔧 手动配置
 
@@ -121,7 +121,7 @@ Caveman-CN/
 │       └── marketplace.json       # Codex 本地插件发现索引
 ├── .codex/
 │   ├── config.toml                # 启用 codex_hooks
-│   └── hooks.json                 # SessionStart 首次注入 + UserPromptSubmit 每轮强化
+│   └── hooks.json                 # SessionStart 首次注入
 ├── plugins/
 │   └── caveman-cn/
 │       ├── .codex-plugin/
