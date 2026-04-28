@@ -21,6 +21,29 @@ npx skills add TreesCodeResp/Caveman-CN
 | GitHub Copilot | `npx skills add TreesCodeResp/Caveman-CN -a github-copilot` |
 | CodeBuddy | `npx skills add TreesCodeResp/Caveman-CN -a codebuddy` |
 
+### Codex
+
+<details>
+<summary><strong>Codex — 完整说明</strong></summary>
+
+**macOS / Linux：**
+1. Clone 本仓 → 在仓目录内打开 Codex → `/plugins` → 搜索 "Caveman-CN" → Install
+2. repo-local 自动激活已由 `.codex/hooks.json` + `.codex/config.toml` 配置
+
+**Windows：**
+1. 先启用符号链接：`git config --global core.symlinks true`（需管理员或开发者模式）
+2. Clone 本仓 → 打开 VS Code → Codex Settings → Plugins → 在本地 marketplace 中找到 "Caveman-CN" → Install → Reload Window
+3. Codex hooks 在 Windows 下当前禁用，用 `$caveman-cn` 手动启动 
+
+本仓通过 `.codex/hooks.json` + `.codex/config.toml` 实现自动激活，macOS/Linux 下在本仓内启动 Codex 时自动生效。除了 `SessionStart` 首次注入外，`UserPromptSubmit` hook 在每次用户输入时追加简短强化提示，防止长对话中极简模式漂移。安装的插件提供 `$caveman-cn` 命令；若想在其他仓库也启用自动激活，复制相同的 hook 并启用：
+
+```toml
+[features]
+codex_hooks = true
+```
+
+</details>
+
 ### Windows 用户
 
 Windows 符号链接需管理员权限或开发者模式。如安装报错，加 `--copy` 改用文件复制：
@@ -28,6 +51,8 @@ Windows 符号链接需管理员权限或开发者模式。如安装报错，加
 ```bash
 npx skills add TreesCodeResp/Caveman-CN --copy
 ```
+
+> Codex 说明：上游 `caveman` README 已提示 Windows 下 repo-local Codex hooks 可能需要手动触发。`caveman-CN` 仍提供 `.codex/hooks.json`，但需以本机实际行为为准验证。
 
 ### 非交互安装（CI/CD）
 
@@ -56,11 +81,19 @@ npx skills add TreesCodeResp/Caveman-CN --yes
 - **标准**："新引用 = 重渲染。`useMemo` 包裹。"
 - **极限**："内联 obj → 新引用 → 重渲染。`useMemo`。"
 
+### Codex 使用
+
+- Codex 使用 `$caveman-cn` 语法，不是 `/caveman-cn`
+- 本仓通过 `.codex/hooks.json` 自动激活（`SessionStart` 注入 + `UserPromptSubmit` 每轮强化）；安装的插件提供 `$caveman-cn` 命令
+- 若想在其他仓库也启用自动激活，复制相同的 `SessionStart` hook 并启用 `codex_hooks`
+- 退出：`停止极简` / `正常模式`
+
 ## 🔧 手动配置
 
 如果 `npx skills add` 不可用或不支持你的 Agent，可手动复制 `skills/caveman-cn/SKILL.md` 的内容到对应位置：
 
 - Claude Code → `.claude/skills/caveman-cn.md`
+- Codex (plugin) → Clone Repo → 进入目录 `codex` → `/plugins` → 搜索 "Caveman-CN" → Install
 - Cursor → `.cursor/rules/caveman-cn.mdc`
 - GitHub Copilot → `.github/copilot-instructions.md`
 - CodeBuddy（项目级）→ `.codebuddy/skills/caveman-cn/SKILL.md`
@@ -83,6 +116,24 @@ npx skills add TreesCodeResp/Caveman-CN --yes
 
 ```
 Caveman-CN/
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json       # Codex 本地插件发现索引
+├── .codex/
+│   ├── config.toml                # 启用 codex_hooks
+│   └── hooks.json                 # SessionStart 首次注入 + UserPromptSubmit 每轮强化
+├── plugins/
+│   └── caveman-cn/
+│       ├── .codex-plugin/
+│       │   └── plugin.json        # 插件 manifest（名称、skill 路径、元数据）
+│       ├── assets/
+│       │   ├── caveman-cn.svg
+│       │   └── caveman-cn-small.svg
+│       └── skills/
+│           └── caveman-cn/
+│               ├── agents/
+│               │   └── openai.yaml # Agent 元数据（显示名、默认 prompt）
+│               └── SKILL.md       # 插件内 skill 镜像（从根级 skill 同步）
 ├── skills/
 │   └── caveman-cn/
 │       └── SKILL.md      # Skill 定义（npx skills 读取）

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Caveman-CN"
+  short_description: "中文极简模式。少废话，保技术。"
+  icon_small: "./assets/caveman-cn-small.svg"
+  icon_large: "./assets/caveman-cn.svg"
+  default_prompt: "Use $caveman-cn to answer in concise Chinese, cut filler, and preserve exact technical substance."
