@@ -86,7 +86,7 @@ npx skills add TreesCodeResp/Caveman-CN --yes
 - Codex 使用 `$caveman-cn` 语法，不是 `/caveman-cn`
 - 本仓通过 `.codex/hooks.json` 自动激活（`SessionStart` 注入插件/skill）；安装的插件提供 `$caveman-cn` 命令
 - 若想在其他仓库也启用自动激活，复制相同的 `SessionStart` hook 并启用 `codex_hooks`
-- 退出：`停止极简` / `正常模式` 仅影响当前会话内模型行为；startup/resume 会由 `SessionStart` 重新注入。持久退出需后续 stateful hook 实现，见项目级 spec。
+- 退出：`停止极简` / `正常模式` 仅影响当前会话内模型行为；startup/resume 会由 `SessionStart` 重新注入。
 
 ## 🔧 手动配置
 
