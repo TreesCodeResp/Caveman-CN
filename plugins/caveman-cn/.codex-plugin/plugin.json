@@ -1,0 +1,40 @@
+{
+  "name": "caveman-cn",
+  "version": "0.1.0",
+  "description": "中文极简回复模式。砍废话，保技术实质。",
+  "author": {
+    "name": "TreesCodeResp",
+    "url": "https://github.com/TreesCodeResp/Caveman-CN"
+  },
+  "homepage": "https://github.com/TreesCodeResp/Caveman-CN",
+  "repository": "https://github.com/TreesCodeResp/Caveman-CN",
+  "license": "MIT",
+  "keywords": [
+    "productivity",
+    "communication",
+    "brevity",
+    "chinese",
+    "writing"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Caveman-CN",
+    "shortDescription": "中文极简模式。少废话，保技术。",
+    "longDescription": "面向 Codex 的中文极简回复模式。压缩表达，保留技术精度和可执行信息。",
+    "developerName": "TreesCodeResp",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://github.com/TreesCodeResp/Caveman-CN",
+    "privacyPolicyURL": "https://github.com/TreesCodeResp/Caveman-CN/blob/main/README.md",
+    "termsOfServiceURL": "https://github.com/TreesCodeResp/Caveman-CN/blob/main/LICENSE",
+    "defaultPrompt": [
+      "Use $caveman-cn to answer in concise Chinese, cut filler, and preserve exact technical substance."
+    ],
+    "composerIcon": "./assets/caveman-cn-small.svg",
+    "logo": "./assets/caveman-cn.svg",
+    "screenshots": [],
+    "brandColor": "#6B7280"
+  }
+}

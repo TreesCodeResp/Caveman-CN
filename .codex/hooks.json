@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'CAVEMAN-CN MODE ACTIVE. 规则: 默认标准档。回复紧凑，保留技术实质。砍客套、语气词、过渡句、弱化表达。片段句可用，必要时用缩写和箭头因果。代码、commit、PR、技术文档场景不精简。退出只认: '停止极简' / '正常模式'。'",
+            "timeout": 5,
+            "statusMessage": "Loading caveman-cn mode"
+          }
+        ]
+      }
+    ]
+  }
+}
